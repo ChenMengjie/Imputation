@@ -9,7 +9,7 @@
   install.packages ("glmnet")
   ```
 
-**scPoissonGamma** can be installed from github directly as follows:
+**Imputation** can be installed from github directly as follows:
 
   ```R
   install.packages ("devtools")
