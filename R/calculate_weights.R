@@ -24,12 +24,18 @@ calculate_weights <- function(z, X){
 	A <- rbind(diag(k), - diag(k))
 	b <- c(rep(1, k), rep(0, k))
 
-	res <- try(solve.QP(D, d, -t(A), -b)$solution)
-  if(class(res) != "try-error"){
-    coef <- c(1-sum(res), res)
+	res <- try(solve.QP(D, d, -t(A), -b)$solution, silent = TRUE)
+  if(class(res) == "try-error"){
+    res <- try(solve.QP(nearPD(D, ensureSymmetry = TRUE)$mat, d, -t(A), -b)$solution, silent = TRUE)
+    if(class(res) == "try-error"){
+      coef <- rep(1/(k+1), k+1)
+    } else {
+      coef <- c(1-sum(res), res)
+    }
   } else {
-    coef <- rep(1/(k+1), k+1)
+    coef <- c(1-sum(res), res)
   }
+
 	return(coef)
 }
 
