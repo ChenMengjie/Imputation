@@ -8,7 +8,7 @@ Imputation1_cpp <- function(gene.expression, percentage.cutoff = 0.1, num = 1000
   zero.rate <- apply(xx, 1, function(x){length(x[x == 0])})/n
   flag <-  zero.rate <= percentage.cutoff
 
-  logxx <- apply(xx, 2, function(y){log(y + 0.1)})
+  logxx <- apply(xx, 2, function(y){log(y + 1)})
   data <- logxx[round(runif(num)*p), ]
   zero.matrix <- xx != 0
   zero.matrix <- apply(zero.matrix, 2, as.numeric)
@@ -34,7 +34,7 @@ Imputation3 <- function(gene.expression, percentage.cutoff = 0.1, num = 5000, pe
   zero.rate <- apply(xx, 1, function(x){length(x[x == 0])})/n
   flag <-  zero.rate <= percentage.cutoff
 
-  logxx <- apply(xx, 2, function(y){log(y + 0.1)})
+  logxx <- apply(xx, 2, function(y){log(y + 1)})
   data <- logxx[round(runif(num)*p), ]
   data.copy2 <- t(logxx[flag, round(runif(ceiling(percentage.samples*n))*n)])
 
@@ -134,7 +134,7 @@ Imputation3_cpp <- function(gene.expression, percentage.cutoff = 0.1, num = 1000
   zero.rate <- apply(xx, 1, function(x){length(x[x == 0])})/n
   flag <- zero.rate <= percentage.cutoff
   which_flag <- which(flag)
-  logxx <- apply(xx, 2, function(y){log(y + 0.1)})
+  logxx <- apply(xx, 2, function(y){log(y + 1)})
   data <- logxx[round(runif(num)*p), ]
   sample.flag <- round(runif(round(percentage.samples*n))*n)
   data.copy2 <- t(logxx[flag, sample.flag])
