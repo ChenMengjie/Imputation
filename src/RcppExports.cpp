@@ -272,6 +272,73 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// no_reweighting_sum_C
+arma::vec no_reweighting_sum_C(arma::mat Ymat, arma::vec Y, arma::vec Yflag, arma::vec prior_weight, bool ImputeAll);
+RcppExport SEXP Imputation_no_reweighting_sum_C(SEXP YmatSEXP, SEXP YSEXP, SEXP YflagSEXP, SEXP prior_weightSEXP, SEXP ImputeAllSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type Ymat(YmatSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type Y(YSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type Yflag(YflagSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type prior_weight(prior_weightSEXP);
+    Rcpp::traits::input_parameter< bool >::type ImputeAll(ImputeAllSEXP);
+    rcpp_result_gen = Rcpp::wrap(no_reweighting_sum_C(Ymat, Y, Yflag, prior_weight, ImputeAll));
+    return rcpp_result_gen;
+END_RCPP
+}
+// imputation_by_samples_without_reweighting
+Rcpp::List imputation_by_samples_without_reweighting(arma::mat data, arma::mat selected_logxx, arma::mat logxx, arma::mat zero_matrix, int n, int p, bool minbool);
+RcppExport SEXP Imputation_imputation_by_samples_without_reweighting(SEXP dataSEXP, SEXP selected_logxxSEXP, SEXP logxxSEXP, SEXP zero_matrixSEXP, SEXP nSEXP, SEXP pSEXP, SEXP minboolSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type data(dataSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type selected_logxx(selected_logxxSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type logxx(logxxSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type zero_matrix(zero_matrixSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< int >::type p(pSEXP);
+    Rcpp::traits::input_parameter< bool >::type minbool(minboolSEXP);
+    rcpp_result_gen = Rcpp::wrap(imputation_by_samples_without_reweighting(data, selected_logxx, logxx, zero_matrix, n, p, minbool));
+    return rcpp_result_gen;
+END_RCPP
+}
+// replacing_by_expectation_C
+arma::vec replacing_by_expectation_C(arma::mat Ymat, arma::mat Yflagmat, arma::vec Y, arma::vec Yflag, arma::mat Ymat_sub, arma::mat Yflagmat_sub, arma::vec prior_weight, bool ImputeAll);
+RcppExport SEXP Imputation_replacing_by_expectation_C(SEXP YmatSEXP, SEXP YflagmatSEXP, SEXP YSEXP, SEXP YflagSEXP, SEXP Ymat_subSEXP, SEXP Yflagmat_subSEXP, SEXP prior_weightSEXP, SEXP ImputeAllSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type Ymat(YmatSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type Yflagmat(YflagmatSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type Y(YSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type Yflag(YflagSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type Ymat_sub(Ymat_subSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type Yflagmat_sub(Yflagmat_subSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type prior_weight(prior_weightSEXP);
+    Rcpp::traits::input_parameter< bool >::type ImputeAll(ImputeAllSEXP);
+    rcpp_result_gen = Rcpp::wrap(replacing_by_expectation_C(Ymat, Yflagmat, Y, Yflag, Ymat_sub, Yflagmat_sub, prior_weight, ImputeAll));
+    return rcpp_result_gen;
+END_RCPP
+}
+// imputation_by_samples_expectation
+Rcpp::List imputation_by_samples_expectation(arma::mat data, arma::mat selected_logxx, arma::mat logxx, arma::mat zero_matrix, int n, int p, bool minbool);
+RcppExport SEXP Imputation_imputation_by_samples_expectation(SEXP dataSEXP, SEXP selected_logxxSEXP, SEXP logxxSEXP, SEXP zero_matrixSEXP, SEXP nSEXP, SEXP pSEXP, SEXP minboolSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type data(dataSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type selected_logxx(selected_logxxSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type logxx(logxxSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type zero_matrix(zero_matrixSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< int >::type p(pSEXP);
+    Rcpp::traits::input_parameter< bool >::type minbool(minboolSEXP);
+    rcpp_result_gen = Rcpp::wrap(imputation_by_samples_expectation(data, selected_logxx, logxx, zero_matrix, n, p, minbool));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"Imputation_calculate_weights", (DL_FUNC) &Imputation_calculate_weights, 2},
@@ -288,6 +355,10 @@ static const R_CallMethodDef CallEntries[] = {
     {"Imputation_imputation_by_samples", (DL_FUNC) &Imputation_imputation_by_samples, 7},
     {"Imputation_imputation_by_genes", (DL_FUNC) &Imputation_imputation_by_genes, 3},
     {"Imputation_reweighting_with_bulk_C", (DL_FUNC) &Imputation_reweighting_with_bulk_C, 5},
+    {"Imputation_no_reweighting_sum_C", (DL_FUNC) &Imputation_no_reweighting_sum_C, 5},
+    {"Imputation_imputation_by_samples_without_reweighting", (DL_FUNC) &Imputation_imputation_by_samples_without_reweighting, 7},
+    {"Imputation_replacing_by_expectation_C", (DL_FUNC) &Imputation_replacing_by_expectation_C, 8},
+    {"Imputation_imputation_by_samples_expectation", (DL_FUNC) &Imputation_imputation_by_samples_expectation, 7},
     {NULL, NULL, 0}
 };
 

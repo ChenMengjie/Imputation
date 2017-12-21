@@ -98,7 +98,7 @@ Imputation1 <- function(gene.expression, percentage.cutoff = 0.1, num = 5000, Im
   zero.rate <- apply(xx, 1, function(x){length(x[x == 0])})/n
   flag <- zero.rate <= percentage.cutoff
 
-  logxx <- apply(xx, 2, function(y){log(y + 1)})
+  logxx <- apply(xx, 2, function(y){log(y + 0.1)})
   data <- logxx[round(runif(num)*p), ]
   zero.matrix <- xx != 0
   zero.matrix <- apply(zero.matrix, 2, as.numeric)
@@ -157,7 +157,7 @@ Imputation1_star <- function(gene.expression, percentage.cutoff = 0.1, num = 500
   zero.rate <- apply(xx, 1, function(x){length(x[x == 0])})/n
   flag <-  zero.rate <= percentage.cutoff
 
-  logxx <- apply(xx, 2, function(y){log(y + 1)})
+  logxx <- apply(xx, 2, function(y){log(y + 0.1)})
 
   data <- logxx[round(runif(num)*p), ]
   zero.matrix <- xx != 0
@@ -212,7 +212,7 @@ Imputation2 <- function(gene.expression, gc, percentage.cutoff = 0.1, num = 5000
   n <- ncol(xx)
   zero.rate <- apply(xx, 1, function(x){length(x[x == 0])})/n
   flag <- which(zero.rate <= percentage.cutoff)
-  logxx <- apply(xx, 2, function(y){log(y + 1)})
+  logxx <- apply(xx, 2, function(y){log(y + 0.1)})
   data <- logxx[round(runif(num)*p), ]
 
   zero.matrix <- xx != 0

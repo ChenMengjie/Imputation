@@ -57,3 +57,19 @@ reweighting_with_bulk_C <- function(Ymat, Yflagmat, meanY, sdY, prior_weight) {
     .Call('Imputation_reweighting_with_bulk_C', PACKAGE = 'Imputation', Ymat, Yflagmat, meanY, sdY, prior_weight)
 }
 
+no_reweighting_sum_C <- function(Ymat, Y, Yflag, prior_weight, ImputeAll) {
+    .Call('Imputation_no_reweighting_sum_C', PACKAGE = 'Imputation', Ymat, Y, Yflag, prior_weight, ImputeAll)
+}
+
+imputation_by_samples_without_reweighting <- function(data, selected_logxx, logxx, zero_matrix, n, p, minbool) {
+    .Call('Imputation_imputation_by_samples_without_reweighting', PACKAGE = 'Imputation', data, selected_logxx, logxx, zero_matrix, n, p, minbool)
+}
+
+replacing_by_expectation_C <- function(Ymat, Yflagmat, Y, Yflag, Ymat_sub, Yflagmat_sub, prior_weight, ImputeAll) {
+    .Call('Imputation_replacing_by_expectation_C', PACKAGE = 'Imputation', Ymat, Yflagmat, Y, Yflag, Ymat_sub, Yflagmat_sub, prior_weight, ImputeAll)
+}
+
+imputation_by_samples_expectation <- function(data, selected_logxx, logxx, zero_matrix, n, p, minbool) {
+    .Call('Imputation_imputation_by_samples_expectation', PACKAGE = 'Imputation', data, selected_logxx, logxx, zero_matrix, n, p, minbool)
+}
+
