@@ -40,10 +40,10 @@ calculate_weights <- function(z, X){
 }
 
 
-fitting_lasso <- function(y, X, type = "min"){
+fitting_lasso <- function(y, X, type = "min", alpha = 1){
 
 	require(glmnet)
-	cv.lasso <- cv.glmnet(X, y, intercept = FALSE)
+	cv.lasso <- cv.glmnet(X, y, intercept = FALSE, alpha = alpha)
 	if(type == "min"){
 	  coeff <- as.vector(coef(cv.lasso, s = cv.lasso$lambda.min))
 	} else {
@@ -53,6 +53,8 @@ fitting_lasso <- function(y, X, type = "min"){
   res <- list(coeff = coeff[selected], selected = selected - 1)
 	return(res)
 }
+
+
 
 reweighting <- function(prior, Y, Yflag){
 	k <- length(Y[-1])

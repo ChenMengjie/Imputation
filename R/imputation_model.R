@@ -1,5 +1,5 @@
 
-Imputation1_cpp <- function(gene.expression, percentage.cutoff = 0.1, num = 10000,  minbool = FALSE){
+Imputation1_cpp <- function(gene.expression, percentage.cutoff = 0.1, num = 10000,  minbool = FALSE, alpha = 1){
 
   xx <- gene.expression # p*n
   p <- nrow(xx)
@@ -13,7 +13,7 @@ Imputation1_cpp <- function(gene.expression, percentage.cutoff = 0.1, num = 1000
   zero.matrix <- xx != 0
   zero.matrix <- apply(zero.matrix, 2, as.numeric)
   selected_logxx <- logxx[flag, ]
-  res_imp <- imputation_by_samples(data, selected_logxx, logxx, zero.matrix, n, p, minbool)
+  res_imp <- imputation_by_samples(data, selected_logxx, logxx, zero.matrix, n, p, minbool, alpha)
   outlier_flag <- apply(res_imp$sample_weights, 1, function(x){any(x==-1)})
   outliers <- c(1:n)[outlier_flag]
 
@@ -26,7 +26,40 @@ Imputation1_cpp <- function(gene.expression, percentage.cutoff = 0.1, num = 1000
 }
 
 
-Imputation1_cpp_with_selections <- function(gene.expression, percentage.cutoff = 0.1, num = 10000,  minbool = FALSE, expectation = TRUE, partial = FALSE){
+Imputation1_cpp_with_elasticnet <- function(gene.expression, percentage.cutoff = 0.1, num = 10000,  minbool = FALSE, expectation = TRUE,  alpha = 1){
+
+  xx <- gene.expression # p*n
+  p <- nrow(xx)
+  n <- ncol(xx)
+  if(p < num) num <- round(0.8*p)
+  zero.rate <- apply(xx, 1, function(x){length(x[x == 0])})/n
+  flag <-  zero.rate <= percentage.cutoff
+
+  logxx <- apply(xx, 2, function(y){log(y + 0.1)})
+  data <- logxx[round(runif(num)*p), ]
+  zero.matrix <- xx != 0
+  zero.matrix <- apply(zero.matrix, 2, as.numeric)
+  selected_logxx <- logxx[flag, ]
+  if(expectation == TRUE){
+    res_imp <- imputation_by_samples_expectation(data, selected_logxx, logxx, zero.matrix, n, p, minbool, alpha)
+  } else {
+    res_imp <- imputation_by_samples(data, selected_logxx, logxx, zero.matrix, n, p, minbool, alpha)
+  }
+
+
+  outlier_flag <- apply(res_imp$sample_weights, 1, function(x){any(x==-1)})
+  outliers <- c(1:n)[outlier_flag]
+
+  nopredict <- logxx
+  nopredict[gene.expression==0] <- res_imp$imputed[gene.expression==0]
+
+  res <- list(predicted = res_imp$imputed, imputed = nopredict,
+              sample_weights = res_imp$sample_weights, outliers=outliers)
+  return(res)
+}
+
+
+Imputation1_cpp_with_selections <- function(gene.expression, percentage.cutoff = 0.1, num = 10000,  minbool = FALSE, expectation = TRUE, partial = FALSE, alpha = 1){
 
   xx <- gene.expression # p*n
   p <- nrow(xx)
@@ -41,13 +74,13 @@ Imputation1_cpp_with_selections <- function(gene.expression, percentage.cutoff =
   zero.matrix <- apply(zero.matrix, 2, as.numeric)
   selected_logxx <- logxx[flag, ]
   if(expectation == TRUE & partial == TRUE){
-    res_imp <- imputation_by_samples_expectation_partial(data, selected_logxx, logxx, zero.matrix, n, p, minbool)
+    res_imp <- imputation_by_samples_expectation_partial(data, selected_logxx, logxx, zero.matrix, n, p, minbool, alpha)
   }
   if(expectation == TRUE & partial != TRUE){
-    res_imp <- imputation_by_samples_expectation(data, selected_logxx, logxx, zero.matrix, n, p, minbool)
+    res_imp <- imputation_by_samples_expectation(data, selected_logxx, logxx, zero.matrix, n, p, minbool, alpha)
   }
   if(expectation != TRUE){
-    res_imp <- imputation_by_samples_without_reweighting(data, selected_logxx, logxx, zero.matrix, n, p, minbool)
+    res_imp <- imputation_by_samples_without_reweighting(data, selected_logxx, logxx, zero.matrix, n, p, minbool, alpha)
   }
 
   outlier_flag <- apply(res_imp$sample_weights, 1, function(x){any(x==-1)})
@@ -161,7 +194,7 @@ Imputation3 <- function(gene.expression, percentage.cutoff = 0.1, num = 5000, pe
 }
 
 
-Imputation3_cpp <- function(gene.expression, percentage.cutoff = 0.1, num = 10000, percentage.samples = 0.8, minbool = FALSE){
+Imputation3_cpp <- function(gene.expression, percentage.cutoff = 0.1, num = 10000, percentage.samples = 0.8, minbool = FALSE, alpha = 1){
 
   xx <- gene.expression # p*n
   p <- nrow(xx)
@@ -178,7 +211,7 @@ Imputation3_cpp <- function(gene.expression, percentage.cutoff = 0.1, num = 1000
   zero.matrix <- xx != 0
   zero.matrix <- apply(zero.matrix, 2, as.numeric)
   selected_logxx <- logxx[flag, ]
-  res_imp <- imputation_by_samples(data, selected_logxx, logxx, zero.matrix, n, p, minbool)
+  res_imp <- imputation_by_samples(data, selected_logxx, logxx, zero.matrix, n, p, minbool, alpha)
   outlier_flag <- apply(res_imp$sample_weights, 1, function(x){any(x == -1)})
   outliers <- c(1:n)[outlier_flag]
   imputed <- res_imp$imputed

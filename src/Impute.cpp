@@ -17,14 +17,14 @@ arma::vec calculate_weights(arma::vec z, arma::mat X){
 // [[Rcpp::depends("RcppArmadillo")]]
 // [[Rcpp::export]]
 
-Rcpp::List fitting_lasso(arma::vec y, arma::mat X, bool min){
+Rcpp::List fitting_lasso(arma::vec y, arma::mat X, bool min, double alpha){
   Environment myEnv("package:Imputation");
   Function fitting_lasso_fun = myEnv["fitting_lasso"];
   if(min){
-    Rcpp::List fitting_lasso_res = wrap(fitting_lasso_fun(y, X, "min"));
+    Rcpp::List fitting_lasso_res = wrap(fitting_lasso_fun(y, X, "min", alpha));
     return fitting_lasso_res;
   } else {
-    Rcpp::List fitting_lasso_res = wrap(fitting_lasso_fun(y, X, "1se"));
+    Rcpp::List fitting_lasso_res = wrap(fitting_lasso_fun(y, X, "1se", alpha));
     return fitting_lasso_res;
   }
 }
@@ -517,7 +517,7 @@ arma::vec reweighting_C(arma::mat Ymat, arma::mat Yflagmat, arma::vec Y, arma::v
 // [[Rcpp::depends("RcppArmadillo")]]
 // [[Rcpp::export]]
 
-Rcpp::List imputation_by_samples(arma::mat data, arma::mat selected_logxx, arma::mat logxx, arma::mat zero_matrix, int n, int p, bool minbool){
+Rcpp::List imputation_by_samples(arma::mat data, arma::mat selected_logxx, arma::mat logxx, arma::mat zero_matrix, int n, int p, bool minbool, double alpha){
 
   arma::mat imputed = logxx;
   arma::mat t_logxx = logxx.t();
@@ -535,7 +535,7 @@ Rcpp::List imputation_by_samples(arma::mat data, arma::mat selected_logxx, arma:
       ind_new(l) += 1;
     }
 
-    Rcpp::List res = fitting_lasso(data.col(j), data.cols(ind_new), minbool);
+    Rcpp::List res = fitting_lasso(data.col(j), data.cols(ind_new), minbool, alpha);
     arma::vec coeff = res["coeff"];
     arma::uvec selected = res["selected"] ;
     selected = selected - 1;
@@ -748,7 +748,7 @@ arma::vec no_reweighting_sum_C(arma::mat Ymat, arma::vec Y, arma::vec Yflag, arm
 // [[Rcpp::depends("RcppArmadillo")]]
 // [[Rcpp::export]]
 
-Rcpp::List imputation_by_samples_without_reweighting(arma::mat data, arma::mat selected_logxx, arma::mat logxx, arma::mat zero_matrix, int n, int p, bool minbool){
+Rcpp::List imputation_by_samples_without_reweighting(arma::mat data, arma::mat selected_logxx, arma::mat logxx, arma::mat zero_matrix, int n, int p, bool minbool, double alpha){
 
   arma::mat imputed = logxx;
   arma::mat t_logxx = logxx.t();
@@ -766,7 +766,7 @@ Rcpp::List imputation_by_samples_without_reweighting(arma::mat data, arma::mat s
       ind_new(l) += 1;
     }
 
-    Rcpp::List res = fitting_lasso(data.col(j), data.cols(ind_new), minbool);
+    Rcpp::List res = fitting_lasso(data.col(j), data.cols(ind_new), minbool, alpha);
     arma::vec coeff = res["coeff"];
     arma::uvec selected = res["selected"] ;
     selected = selected - 1;
@@ -901,7 +901,7 @@ arma::vec replacing_by_expectation_C(arma::mat Ymat, arma::mat Yflagmat, arma::v
 // [[Rcpp::depends("RcppArmadillo")]]
 // [[Rcpp::export]]
 
-Rcpp::List imputation_by_samples_expectation(arma::mat data, arma::mat selected_logxx, arma::mat logxx, arma::mat zero_matrix, int n, int p, bool minbool){
+Rcpp::List imputation_by_samples_expectation(arma::mat data, arma::mat selected_logxx, arma::mat logxx, arma::mat zero_matrix, int n, int p, bool minbool, double alpha){
 
   arma::mat imputed = logxx;
   arma::mat t_logxx = logxx.t();
@@ -919,7 +919,7 @@ Rcpp::List imputation_by_samples_expectation(arma::mat data, arma::mat selected_
       ind_new(l) += 1;
     }
 
-    Rcpp::List res = fitting_lasso(data.col(j), data.cols(ind_new), minbool);
+    Rcpp::List res = fitting_lasso(data.col(j), data.cols(ind_new), minbool, alpha);
     arma::vec coeff = res["coeff"];
     arma::uvec selected = res["selected"] ;
     selected = selected - 1;
@@ -1060,7 +1060,7 @@ arma::vec replacing_by_expectation_partial_C(arma::mat Ymat, arma::mat Yflagmat,
 // [[Rcpp::depends("RcppArmadillo")]]
 // [[Rcpp::export]]
 
-Rcpp::List imputation_by_samples_expectation_partial(arma::mat data, arma::mat selected_logxx, arma::mat logxx, arma::mat zero_matrix, int n, int p, bool minbool){
+Rcpp::List imputation_by_samples_expectation_partial(arma::mat data, arma::mat selected_logxx, arma::mat logxx, arma::mat zero_matrix, int n, int p, bool minbool, double alpha){
 
   arma::mat imputed = logxx;
   arma::mat t_logxx = logxx.t();
@@ -1078,7 +1078,7 @@ Rcpp::List imputation_by_samples_expectation_partial(arma::mat data, arma::mat s
       ind_new(l) += 1;
     }
 
-    Rcpp::List res = fitting_lasso(data.col(j), data.cols(ind_new), minbool);
+    Rcpp::List res = fitting_lasso(data.col(j), data.cols(ind_new), minbool, alpha);
     arma::vec coeff = res["coeff"];
     arma::uvec selected = res["selected"] ;
     selected = selected - 1;

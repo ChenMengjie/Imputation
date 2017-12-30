@@ -5,8 +5,8 @@ calculate_weights <- function(z, X) {
     .Call('Imputation_calculate_weights', PACKAGE = 'Imputation', z, X)
 }
 
-fitting_lasso <- function(y, X, min) {
-    .Call('Imputation_fitting_lasso', PACKAGE = 'Imputation', y, X, min)
+fitting_lasso <- function(y, X, min, alpha) {
+    .Call('Imputation_fitting_lasso', PACKAGE = 'Imputation', y, X, min, alpha)
 }
 
 log_factorial <- function(Y) {
@@ -45,8 +45,8 @@ reweighting_C <- function(Ymat, Yflagmat, Y, Yflag) {
     .Call('Imputation_reweighting_C', PACKAGE = 'Imputation', Ymat, Yflagmat, Y, Yflag)
 }
 
-imputation_by_samples <- function(data, selected_logxx, logxx, zero_matrix, n, p, minbool) {
-    .Call('Imputation_imputation_by_samples', PACKAGE = 'Imputation', data, selected_logxx, logxx, zero_matrix, n, p, minbool)
+imputation_by_samples <- function(data, selected_logxx, logxx, zero_matrix, n, p, minbool, alpha) {
+    .Call('Imputation_imputation_by_samples', PACKAGE = 'Imputation', data, selected_logxx, logxx, zero_matrix, n, p, minbool, alpha)
 }
 
 imputation_by_genes <- function(imputed, data_copy2, which_flag) {
@@ -61,15 +61,23 @@ no_reweighting_sum_C <- function(Ymat, Y, Yflag, prior_weight, ImputeAll) {
     .Call('Imputation_no_reweighting_sum_C', PACKAGE = 'Imputation', Ymat, Y, Yflag, prior_weight, ImputeAll)
 }
 
-imputation_by_samples_without_reweighting <- function(data, selected_logxx, logxx, zero_matrix, n, p, minbool) {
-    .Call('Imputation_imputation_by_samples_without_reweighting', PACKAGE = 'Imputation', data, selected_logxx, logxx, zero_matrix, n, p, minbool)
+imputation_by_samples_without_reweighting <- function(data, selected_logxx, logxx, zero_matrix, n, p, minbool, alpha) {
+    .Call('Imputation_imputation_by_samples_without_reweighting', PACKAGE = 'Imputation', data, selected_logxx, logxx, zero_matrix, n, p, minbool, alpha)
 }
 
 replacing_by_expectation_C <- function(Ymat, Yflagmat, Y, Yflag, Ymat_sub, Yflagmat_sub, prior_weight, ImputeAll) {
     .Call('Imputation_replacing_by_expectation_C', PACKAGE = 'Imputation', Ymat, Yflagmat, Y, Yflag, Ymat_sub, Yflagmat_sub, prior_weight, ImputeAll)
 }
 
-imputation_by_samples_expectation <- function(data, selected_logxx, logxx, zero_matrix, n, p, minbool) {
-    .Call('Imputation_imputation_by_samples_expectation', PACKAGE = 'Imputation', data, selected_logxx, logxx, zero_matrix, n, p, minbool)
+imputation_by_samples_expectation <- function(data, selected_logxx, logxx, zero_matrix, n, p, minbool, alpha) {
+    .Call('Imputation_imputation_by_samples_expectation', PACKAGE = 'Imputation', data, selected_logxx, logxx, zero_matrix, n, p, minbool, alpha)
+}
+
+replacing_by_expectation_partial_C <- function(Ymat, Yflagmat, Y, Yflag, prior_weight, ImputeAll) {
+    .Call('Imputation_replacing_by_expectation_partial_C', PACKAGE = 'Imputation', Ymat, Yflagmat, Y, Yflag, prior_weight, ImputeAll)
+}
+
+imputation_by_samples_expectation_partial <- function(data, selected_logxx, logxx, zero_matrix, n, p, minbool, alpha) {
+    .Call('Imputation_imputation_by_samples_expectation_partial', PACKAGE = 'Imputation', data, selected_logxx, logxx, zero_matrix, n, p, minbool, alpha)
 }
 
