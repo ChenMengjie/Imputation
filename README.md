@@ -24,10 +24,13 @@
 library(Imputation)
 data(GSE75748_sc_time_course) # gene expression is a gene * cell count matrix
 gene.expression <- gene.expression[1:5000, 1:200] # test run on a subset of genes
-system.time(imp.res <- try(Imputation3_cpp(gene.expression, percentage.cutoff = 0.1, num = 3000, percentage.samples = 0.8, minbool = FALSE))) 
+system.time(imp.res <- try(Imputation1_cpp(gene.expression, percentage.cutoff = 0.1, num = 3000, percentage.samples = 0.8, minbool = FALSE))) # function using lasso for variable screening 
 str(imp.res)
+system.time(imp.res2 <- try(Imputation1_cpp_with_elasticnet(gene.expression, 0.1, 5000, FALSE, alpha = 0.5))) # function using elastic net for variable screening
+
 ```
-**imputed** and **imputed.by.gene** save the matrices after imputing zero values using sample relationship and both sample/gene relationship, respectively. **predicted** and **predicted.by.gene** save the matrices after predicting all entries (including nonzero entries) using sample relationship and both sample/gene relationship, respectively. 
+
+**imputed** saves the matrix after imputing zero values. **predicted** save the matrix after predicting all entries (including nonzero entries). 
 
 ### Author
 

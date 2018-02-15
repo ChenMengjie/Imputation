@@ -8,7 +8,7 @@ using namespace Rcpp;
 
 // calculate_weights
 arma::vec calculate_weights(arma::vec z, arma::mat X);
-RcppExport SEXP Imputation_calculate_weights(SEXP zSEXP, SEXP XSEXP) {
+RcppExport SEXP _Imputation_calculate_weights(SEXP zSEXP, SEXP XSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -20,7 +20,7 @@ END_RCPP
 }
 // fitting_lasso
 Rcpp::List fitting_lasso(arma::vec y, arma::mat X, bool min, double alpha);
-RcppExport SEXP Imputation_fitting_lasso(SEXP ySEXP, SEXP XSEXP, SEXP minSEXP, SEXP alphaSEXP) {
+RcppExport SEXP _Imputation_fitting_lasso(SEXP ySEXP, SEXP XSEXP, SEXP minSEXP, SEXP alphaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -34,7 +34,7 @@ END_RCPP
 }
 // log_factorial
 double log_factorial(int Y);
-RcppExport SEXP Imputation_log_factorial(SEXP YSEXP) {
+RcppExport SEXP _Imputation_log_factorial(SEXP YSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -45,7 +45,7 @@ END_RCPP
 }
 // log_factorial_calculated
 arma::vec log_factorial_calculated(int N);
-RcppExport SEXP Imputation_log_factorial_calculated(SEXP NSEXP) {
+RcppExport SEXP _Imputation_log_factorial_calculated(SEXP NSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -56,7 +56,7 @@ END_RCPP
 }
 // Mix_gradient_and_LogLikelihood_for_individual_sample
 Rcpp::List Mix_gradient_and_LogLikelihood_for_individual_sample(arma::vec Y, arma::vec W, arma::vec V, arma::vec WY, arma::vec WWY, arma::vec W3Y, arma::vec W4Y, arma::vec VY, arma::vec VVY, arma::vec V3Y, arma::vec V4Y, arma::vec WW, arma::vec W3, arma::vec W4, arma::vec VV, arma::vec V3, arma::vec V4, double a0, double a1, double a2, double a3, double a4, double b1, double b2, double b3, double b4, double psi, int n, double sum_log_factorial_Y);
-RcppExport SEXP Imputation_Mix_gradient_and_LogLikelihood_for_individual_sample(SEXP YSEXP, SEXP WSEXP, SEXP VSEXP, SEXP WYSEXP, SEXP WWYSEXP, SEXP W3YSEXP, SEXP W4YSEXP, SEXP VYSEXP, SEXP VVYSEXP, SEXP V3YSEXP, SEXP V4YSEXP, SEXP WWSEXP, SEXP W3SEXP, SEXP W4SEXP, SEXP VVSEXP, SEXP V3SEXP, SEXP V4SEXP, SEXP a0SEXP, SEXP a1SEXP, SEXP a2SEXP, SEXP a3SEXP, SEXP a4SEXP, SEXP b1SEXP, SEXP b2SEXP, SEXP b3SEXP, SEXP b4SEXP, SEXP psiSEXP, SEXP nSEXP, SEXP sum_log_factorial_YSEXP) {
+RcppExport SEXP _Imputation_Mix_gradient_and_LogLikelihood_for_individual_sample(SEXP YSEXP, SEXP WSEXP, SEXP VSEXP, SEXP WYSEXP, SEXP WWYSEXP, SEXP W3YSEXP, SEXP W4YSEXP, SEXP VYSEXP, SEXP VVYSEXP, SEXP V3YSEXP, SEXP V4YSEXP, SEXP WWSEXP, SEXP W3SEXP, SEXP W4SEXP, SEXP VVSEXP, SEXP V3SEXP, SEXP V4SEXP, SEXP a0SEXP, SEXP a1SEXP, SEXP a2SEXP, SEXP a3SEXP, SEXP a4SEXP, SEXP b1SEXP, SEXP b2SEXP, SEXP b3SEXP, SEXP b4SEXP, SEXP psiSEXP, SEXP nSEXP, SEXP sum_log_factorial_YSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -95,7 +95,7 @@ END_RCPP
 }
 // Mix_LogLikelihood_for_individual_sample
 double Mix_LogLikelihood_for_individual_sample(arma::vec Y, arma::vec W, arma::vec V, arma::vec WW, arma::vec VV, arma::vec W3, arma::vec V3, arma::vec W4, arma::vec V4, double a0, double a1, double a2, double a3, double a4, double b1, double b2, double b3, double b4, double psi, int n, double sum_log_factorial_Y);
-RcppExport SEXP Imputation_Mix_LogLikelihood_for_individual_sample(SEXP YSEXP, SEXP WSEXP, SEXP VSEXP, SEXP WWSEXP, SEXP VVSEXP, SEXP W3SEXP, SEXP V3SEXP, SEXP W4SEXP, SEXP V4SEXP, SEXP a0SEXP, SEXP a1SEXP, SEXP a2SEXP, SEXP a3SEXP, SEXP a4SEXP, SEXP b1SEXP, SEXP b2SEXP, SEXP b3SEXP, SEXP b4SEXP, SEXP psiSEXP, SEXP nSEXP, SEXP sum_log_factorial_YSEXP) {
+RcppExport SEXP _Imputation_Mix_LogLikelihood_for_individual_sample(SEXP YSEXP, SEXP WSEXP, SEXP VSEXP, SEXP WWSEXP, SEXP VVSEXP, SEXP W3SEXP, SEXP V3SEXP, SEXP W4SEXP, SEXP V4SEXP, SEXP a0SEXP, SEXP a1SEXP, SEXP a2SEXP, SEXP a3SEXP, SEXP a4SEXP, SEXP b1SEXP, SEXP b2SEXP, SEXP b3SEXP, SEXP b4SEXP, SEXP psiSEXP, SEXP nSEXP, SEXP sum_log_factorial_YSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -126,7 +126,7 @@ END_RCPP
 }
 // Mix_select_stepsize_for_a_parameter
 double Mix_select_stepsize_for_a_parameter(arma::vec Y, arma::vec W, arma::vec V, arma::vec WW, arma::vec VV, arma::vec W3, arma::vec V3, arma::vec W4, arma::vec V4, double ll, double sum_log_factorial_Y, arma::vec gradient, arma::vec parameters, int ind, double gamma, int n, double down);
-RcppExport SEXP Imputation_Mix_select_stepsize_for_a_parameter(SEXP YSEXP, SEXP WSEXP, SEXP VSEXP, SEXP WWSEXP, SEXP VVSEXP, SEXP W3SEXP, SEXP V3SEXP, SEXP W4SEXP, SEXP V4SEXP, SEXP llSEXP, SEXP sum_log_factorial_YSEXP, SEXP gradientSEXP, SEXP parametersSEXP, SEXP indSEXP, SEXP gammaSEXP, SEXP nSEXP, SEXP downSEXP) {
+RcppExport SEXP _Imputation_Mix_select_stepsize_for_a_parameter(SEXP YSEXP, SEXP WSEXP, SEXP VSEXP, SEXP WWSEXP, SEXP VVSEXP, SEXP W3SEXP, SEXP V3SEXP, SEXP W4SEXP, SEXP V4SEXP, SEXP llSEXP, SEXP sum_log_factorial_YSEXP, SEXP gradientSEXP, SEXP parametersSEXP, SEXP indSEXP, SEXP gammaSEXP, SEXP nSEXP, SEXP downSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -153,7 +153,7 @@ END_RCPP
 }
 // Mix_gradient_descent_for_individual_sample
 Rcpp::List Mix_gradient_descent_for_individual_sample(arma::vec Y, arma::vec W, arma::vec V, double a0, double a1, double a2, double a3, double a4, double b1, double b2, double b3, double b4, double psi, double gamma, int steps, double down);
-RcppExport SEXP Imputation_Mix_gradient_descent_for_individual_sample(SEXP YSEXP, SEXP WSEXP, SEXP VSEXP, SEXP a0SEXP, SEXP a1SEXP, SEXP a2SEXP, SEXP a3SEXP, SEXP a4SEXP, SEXP b1SEXP, SEXP b2SEXP, SEXP b3SEXP, SEXP b4SEXP, SEXP psiSEXP, SEXP gammaSEXP, SEXP stepsSEXP, SEXP downSEXP) {
+RcppExport SEXP _Imputation_Mix_gradient_descent_for_individual_sample(SEXP YSEXP, SEXP WSEXP, SEXP VSEXP, SEXP a0SEXP, SEXP a1SEXP, SEXP a2SEXP, SEXP a3SEXP, SEXP a4SEXP, SEXP b1SEXP, SEXP b2SEXP, SEXP b3SEXP, SEXP b4SEXP, SEXP psiSEXP, SEXP gammaSEXP, SEXP stepsSEXP, SEXP downSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -179,7 +179,7 @@ END_RCPP
 }
 // Predict_for_individual_sample
 arma::vec Predict_for_individual_sample(arma::vec W, arma::vec V, double a0, double a1, double a2, double a3, double a4, double b1, double b2, double b3, double b4);
-RcppExport SEXP Imputation_Predict_for_individual_sample(SEXP WSEXP, SEXP VSEXP, SEXP a0SEXP, SEXP a1SEXP, SEXP a2SEXP, SEXP a3SEXP, SEXP a4SEXP, SEXP b1SEXP, SEXP b2SEXP, SEXP b3SEXP, SEXP b4SEXP) {
+RcppExport SEXP _Imputation_Predict_for_individual_sample(SEXP WSEXP, SEXP VSEXP, SEXP a0SEXP, SEXP a1SEXP, SEXP a2SEXP, SEXP a3SEXP, SEXP a4SEXP, SEXP b1SEXP, SEXP b2SEXP, SEXP b3SEXP, SEXP b4SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -200,7 +200,7 @@ END_RCPP
 }
 // reweighting_sum_C
 arma::vec reweighting_sum_C(arma::mat Ymat, arma::mat Yflagmat, arma::vec Y, arma::vec Yflag, arma::vec prior_weight, bool ImputeAll);
-RcppExport SEXP Imputation_reweighting_sum_C(SEXP YmatSEXP, SEXP YflagmatSEXP, SEXP YSEXP, SEXP YflagSEXP, SEXP prior_weightSEXP, SEXP ImputeAllSEXP) {
+RcppExport SEXP _Imputation_reweighting_sum_C(SEXP YmatSEXP, SEXP YflagmatSEXP, SEXP YSEXP, SEXP YflagSEXP, SEXP prior_weightSEXP, SEXP ImputeAllSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -216,7 +216,7 @@ END_RCPP
 }
 // reweighting_C
 arma::vec reweighting_C(arma::mat Ymat, arma::mat Yflagmat, arma::vec Y, arma::vec Yflag);
-RcppExport SEXP Imputation_reweighting_C(SEXP YmatSEXP, SEXP YflagmatSEXP, SEXP YSEXP, SEXP YflagSEXP) {
+RcppExport SEXP _Imputation_reweighting_C(SEXP YmatSEXP, SEXP YflagmatSEXP, SEXP YSEXP, SEXP YflagSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -230,7 +230,7 @@ END_RCPP
 }
 // imputation_by_samples
 Rcpp::List imputation_by_samples(arma::mat data, arma::mat selected_logxx, arma::mat logxx, arma::mat zero_matrix, int n, int p, bool minbool, double alpha);
-RcppExport SEXP Imputation_imputation_by_samples(SEXP dataSEXP, SEXP selected_logxxSEXP, SEXP logxxSEXP, SEXP zero_matrixSEXP, SEXP nSEXP, SEXP pSEXP, SEXP minboolSEXP, SEXP alphaSEXP) {
+RcppExport SEXP _Imputation_imputation_by_samples(SEXP dataSEXP, SEXP selected_logxxSEXP, SEXP logxxSEXP, SEXP zero_matrixSEXP, SEXP nSEXP, SEXP pSEXP, SEXP minboolSEXP, SEXP alphaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -248,7 +248,7 @@ END_RCPP
 }
 // imputation_by_genes
 Rcpp::List imputation_by_genes(arma::mat imputed, arma::mat data_copy2, arma::uvec which_flag);
-RcppExport SEXP Imputation_imputation_by_genes(SEXP imputedSEXP, SEXP data_copy2SEXP, SEXP which_flagSEXP) {
+RcppExport SEXP _Imputation_imputation_by_genes(SEXP imputedSEXP, SEXP data_copy2SEXP, SEXP which_flagSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -261,7 +261,7 @@ END_RCPP
 }
 // reweighting_with_bulk_C
 arma::vec reweighting_with_bulk_C(arma::mat Ymat, arma::mat Yflagmat, arma::vec meanY, arma::vec sdY, arma::vec prior_weight);
-RcppExport SEXP Imputation_reweighting_with_bulk_C(SEXP YmatSEXP, SEXP YflagmatSEXP, SEXP meanYSEXP, SEXP sdYSEXP, SEXP prior_weightSEXP) {
+RcppExport SEXP _Imputation_reweighting_with_bulk_C(SEXP YmatSEXP, SEXP YflagmatSEXP, SEXP meanYSEXP, SEXP sdYSEXP, SEXP prior_weightSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -276,7 +276,7 @@ END_RCPP
 }
 // no_reweighting_sum_C
 arma::vec no_reweighting_sum_C(arma::mat Ymat, arma::vec Y, arma::vec Yflag, arma::vec prior_weight, bool ImputeAll);
-RcppExport SEXP Imputation_no_reweighting_sum_C(SEXP YmatSEXP, SEXP YSEXP, SEXP YflagSEXP, SEXP prior_weightSEXP, SEXP ImputeAllSEXP) {
+RcppExport SEXP _Imputation_no_reweighting_sum_C(SEXP YmatSEXP, SEXP YSEXP, SEXP YflagSEXP, SEXP prior_weightSEXP, SEXP ImputeAllSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -291,7 +291,7 @@ END_RCPP
 }
 // imputation_by_samples_without_reweighting
 Rcpp::List imputation_by_samples_without_reweighting(arma::mat data, arma::mat selected_logxx, arma::mat logxx, arma::mat zero_matrix, int n, int p, bool minbool, double alpha);
-RcppExport SEXP Imputation_imputation_by_samples_without_reweighting(SEXP dataSEXP, SEXP selected_logxxSEXP, SEXP logxxSEXP, SEXP zero_matrixSEXP, SEXP nSEXP, SEXP pSEXP, SEXP minboolSEXP, SEXP alphaSEXP) {
+RcppExport SEXP _Imputation_imputation_by_samples_without_reweighting(SEXP dataSEXP, SEXP selected_logxxSEXP, SEXP logxxSEXP, SEXP zero_matrixSEXP, SEXP nSEXP, SEXP pSEXP, SEXP minboolSEXP, SEXP alphaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -309,7 +309,7 @@ END_RCPP
 }
 // replacing_by_expectation_C
 arma::vec replacing_by_expectation_C(arma::mat Ymat, arma::mat Yflagmat, arma::vec Y, arma::vec Yflag, arma::mat Ymat_sub, arma::mat Yflagmat_sub, arma::vec prior_weight, bool ImputeAll);
-RcppExport SEXP Imputation_replacing_by_expectation_C(SEXP YmatSEXP, SEXP YflagmatSEXP, SEXP YSEXP, SEXP YflagSEXP, SEXP Ymat_subSEXP, SEXP Yflagmat_subSEXP, SEXP prior_weightSEXP, SEXP ImputeAllSEXP) {
+RcppExport SEXP _Imputation_replacing_by_expectation_C(SEXP YmatSEXP, SEXP YflagmatSEXP, SEXP YSEXP, SEXP YflagSEXP, SEXP Ymat_subSEXP, SEXP Yflagmat_subSEXP, SEXP prior_weightSEXP, SEXP ImputeAllSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -327,7 +327,7 @@ END_RCPP
 }
 // imputation_by_samples_expectation
 Rcpp::List imputation_by_samples_expectation(arma::mat data, arma::mat selected_logxx, arma::mat logxx, arma::mat zero_matrix, int n, int p, bool minbool, double alpha);
-RcppExport SEXP Imputation_imputation_by_samples_expectation(SEXP dataSEXP, SEXP selected_logxxSEXP, SEXP logxxSEXP, SEXP zero_matrixSEXP, SEXP nSEXP, SEXP pSEXP, SEXP minboolSEXP, SEXP alphaSEXP) {
+RcppExport SEXP _Imputation_imputation_by_samples_expectation(SEXP dataSEXP, SEXP selected_logxxSEXP, SEXP logxxSEXP, SEXP zero_matrixSEXP, SEXP nSEXP, SEXP pSEXP, SEXP minboolSEXP, SEXP alphaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -345,7 +345,7 @@ END_RCPP
 }
 // replacing_by_expectation_partial_C
 arma::vec replacing_by_expectation_partial_C(arma::mat Ymat, arma::mat Yflagmat, arma::vec Y, arma::vec Yflag, arma::vec prior_weight, bool ImputeAll);
-RcppExport SEXP Imputation_replacing_by_expectation_partial_C(SEXP YmatSEXP, SEXP YflagmatSEXP, SEXP YSEXP, SEXP YflagSEXP, SEXP prior_weightSEXP, SEXP ImputeAllSEXP) {
+RcppExport SEXP _Imputation_replacing_by_expectation_partial_C(SEXP YmatSEXP, SEXP YflagmatSEXP, SEXP YSEXP, SEXP YflagSEXP, SEXP prior_weightSEXP, SEXP ImputeAllSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -361,7 +361,7 @@ END_RCPP
 }
 // imputation_by_samples_expectation_partial
 Rcpp::List imputation_by_samples_expectation_partial(arma::mat data, arma::mat selected_logxx, arma::mat logxx, arma::mat zero_matrix, int n, int p, bool minbool, double alpha);
-RcppExport SEXP Imputation_imputation_by_samples_expectation_partial(SEXP dataSEXP, SEXP selected_logxxSEXP, SEXP logxxSEXP, SEXP zero_matrixSEXP, SEXP nSEXP, SEXP pSEXP, SEXP minboolSEXP, SEXP alphaSEXP) {
+RcppExport SEXP _Imputation_imputation_by_samples_expectation_partial(SEXP dataSEXP, SEXP selected_logxxSEXP, SEXP logxxSEXP, SEXP zero_matrixSEXP, SEXP nSEXP, SEXP pSEXP, SEXP minboolSEXP, SEXP alphaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -379,26 +379,26 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"Imputation_calculate_weights", (DL_FUNC) &Imputation_calculate_weights, 2},
-    {"Imputation_fitting_lasso", (DL_FUNC) &Imputation_fitting_lasso, 4},
-    {"Imputation_log_factorial", (DL_FUNC) &Imputation_log_factorial, 1},
-    {"Imputation_log_factorial_calculated", (DL_FUNC) &Imputation_log_factorial_calculated, 1},
-    {"Imputation_Mix_gradient_and_LogLikelihood_for_individual_sample", (DL_FUNC) &Imputation_Mix_gradient_and_LogLikelihood_for_individual_sample, 29},
-    {"Imputation_Mix_LogLikelihood_for_individual_sample", (DL_FUNC) &Imputation_Mix_LogLikelihood_for_individual_sample, 21},
-    {"Imputation_Mix_select_stepsize_for_a_parameter", (DL_FUNC) &Imputation_Mix_select_stepsize_for_a_parameter, 17},
-    {"Imputation_Mix_gradient_descent_for_individual_sample", (DL_FUNC) &Imputation_Mix_gradient_descent_for_individual_sample, 16},
-    {"Imputation_Predict_for_individual_sample", (DL_FUNC) &Imputation_Predict_for_individual_sample, 11},
-    {"Imputation_reweighting_sum_C", (DL_FUNC) &Imputation_reweighting_sum_C, 6},
-    {"Imputation_reweighting_C", (DL_FUNC) &Imputation_reweighting_C, 4},
-    {"Imputation_imputation_by_samples", (DL_FUNC) &Imputation_imputation_by_samples, 8},
-    {"Imputation_imputation_by_genes", (DL_FUNC) &Imputation_imputation_by_genes, 3},
-    {"Imputation_reweighting_with_bulk_C", (DL_FUNC) &Imputation_reweighting_with_bulk_C, 5},
-    {"Imputation_no_reweighting_sum_C", (DL_FUNC) &Imputation_no_reweighting_sum_C, 5},
-    {"Imputation_imputation_by_samples_without_reweighting", (DL_FUNC) &Imputation_imputation_by_samples_without_reweighting, 8},
-    {"Imputation_replacing_by_expectation_C", (DL_FUNC) &Imputation_replacing_by_expectation_C, 8},
-    {"Imputation_imputation_by_samples_expectation", (DL_FUNC) &Imputation_imputation_by_samples_expectation, 8},
-    {"Imputation_replacing_by_expectation_partial_C", (DL_FUNC) &Imputation_replacing_by_expectation_partial_C, 6},
-    {"Imputation_imputation_by_samples_expectation_partial", (DL_FUNC) &Imputation_imputation_by_samples_expectation_partial, 8},
+    {"_Imputation_calculate_weights", (DL_FUNC) &_Imputation_calculate_weights, 2},
+    {"_Imputation_fitting_lasso", (DL_FUNC) &_Imputation_fitting_lasso, 4},
+    {"_Imputation_log_factorial", (DL_FUNC) &_Imputation_log_factorial, 1},
+    {"_Imputation_log_factorial_calculated", (DL_FUNC) &_Imputation_log_factorial_calculated, 1},
+    {"_Imputation_Mix_gradient_and_LogLikelihood_for_individual_sample", (DL_FUNC) &_Imputation_Mix_gradient_and_LogLikelihood_for_individual_sample, 29},
+    {"_Imputation_Mix_LogLikelihood_for_individual_sample", (DL_FUNC) &_Imputation_Mix_LogLikelihood_for_individual_sample, 21},
+    {"_Imputation_Mix_select_stepsize_for_a_parameter", (DL_FUNC) &_Imputation_Mix_select_stepsize_for_a_parameter, 17},
+    {"_Imputation_Mix_gradient_descent_for_individual_sample", (DL_FUNC) &_Imputation_Mix_gradient_descent_for_individual_sample, 16},
+    {"_Imputation_Predict_for_individual_sample", (DL_FUNC) &_Imputation_Predict_for_individual_sample, 11},
+    {"_Imputation_reweighting_sum_C", (DL_FUNC) &_Imputation_reweighting_sum_C, 6},
+    {"_Imputation_reweighting_C", (DL_FUNC) &_Imputation_reweighting_C, 4},
+    {"_Imputation_imputation_by_samples", (DL_FUNC) &_Imputation_imputation_by_samples, 8},
+    {"_Imputation_imputation_by_genes", (DL_FUNC) &_Imputation_imputation_by_genes, 3},
+    {"_Imputation_reweighting_with_bulk_C", (DL_FUNC) &_Imputation_reweighting_with_bulk_C, 5},
+    {"_Imputation_no_reweighting_sum_C", (DL_FUNC) &_Imputation_no_reweighting_sum_C, 5},
+    {"_Imputation_imputation_by_samples_without_reweighting", (DL_FUNC) &_Imputation_imputation_by_samples_without_reweighting, 8},
+    {"_Imputation_replacing_by_expectation_C", (DL_FUNC) &_Imputation_replacing_by_expectation_C, 8},
+    {"_Imputation_imputation_by_samples_expectation", (DL_FUNC) &_Imputation_imputation_by_samples_expectation, 8},
+    {"_Imputation_replacing_by_expectation_partial_C", (DL_FUNC) &_Imputation_replacing_by_expectation_partial_C, 6},
+    {"_Imputation_imputation_by_samples_expectation_partial", (DL_FUNC) &_Imputation_imputation_by_samples_expectation_partial, 8},
     {NULL, NULL, 0}
 };
 
